@@ -37,9 +37,10 @@ public class ServiceInfoLog {
         logger.info("Обработка полученных данных");
         List<InfoMethod> infoMethods = dp.getInfoMethods(data);
 
-        System.out.println(infoMethods);
+        logger.info("Получение репорта данных");
+        String str = report.getReport(infoMethods);
 
+        logger.info("Вывод данных");
+        printer.print(str);
     }
-
-
 }
