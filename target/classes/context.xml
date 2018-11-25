@@ -9,10 +9,14 @@
 
     <context:component-scan base-package="com.vg.testtask.*" />
 
+    <bean id="dateCompare" class="com.vg.testtask.processing.comparators.DateCompare"/>
+
     <bean id="reader" class="com.vg.testtask.readers.SimpleReader">
         <constructor-arg value="src\main\resources\smamx.log"/>
     </bean>
-    <bean id="dp" class="com.vg.testtask.processing.SimpleDataProcessing"/>
+    <bean id="dp" class="com.vg.testtask.processing.SimpleDataProcessing">
+        <constructor-arg ref="dateCompare"/>
+    </bean>
     <bean id="report" class="com.vg.testtask.reports.SimpleReport"/>
     <bean id="printerConsole" class="com.vg.testtask.printers.ConsolePrinter" />
     <bean id="printerFile" class="com.vg.testtask.printers.FilePrinter" />

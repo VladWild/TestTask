@@ -1,7 +1,7 @@
 package com.vg.testtask.readers;
 
 import com.vg.testtask.data.reader.DataLine;
-import com.vg.testtask.data.reader.DataSave;
+import com.vg.testtask.data.reader.DataCall;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -21,14 +21,14 @@ public class SimpleReader implements Reader {
     private static final String OPEN_BRACKET = "(";
     private static final String COLON = ":";
 
-    private static final int SIZE_LIST = 4000;
+    private static final int SIZE_LIST = 2900;
 
     private Pattern pDate = Pattern.compile(FORMAT_DATE);
     private Pattern pEntry = Pattern.compile(FORMAT_ENTRY);
     private Pattern pExit = Pattern.compile(FORMAT_EXIT);
     private DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
-    private Map<String, List<DataSave>> data = new HashMap<>();
+    private Map<String, List<DataCall>> data = new HashMap<>();
     private String path;
 
     public SimpleReader(String path) {
@@ -57,19 +57,19 @@ public class SimpleReader implements Reader {
 
     private void saveDataEntry(DataLine dataLine) {
         if (data.containsKey(dataLine.getNameMethod())) {
-            List<DataSave> dataSaves = data.get(dataLine.getNameMethod());
-            dataSaves.add(new DataSave(dataLine.getDate(), dataLine.getId()));
+            List<DataCall> dataCalls = data.get(dataLine.getNameMethod());
+            dataCalls.add(new DataCall(dataLine.getDate(), dataLine.getId()));
         } else {
-            List<DataSave> list = new ArrayList<>(SIZE_LIST);
-            list.add(new DataSave(dataLine.getDate(), dataLine.getId()));
+            List<DataCall> list = new ArrayList<>(SIZE_LIST);
+            list.add(new DataCall(dataLine.getDate(), dataLine.getId()));
             data.put(dataLine.getNameMethod(), list);
         }
     }
 
     private void saveDataExit(DataLine dataLine) {
         if (data.containsKey(dataLine.getNameMethod())){
-            List<DataSave> dataSaves = data.get(dataLine.getNameMethod());
-            dataSaves.forEach(dataSave -> {
+            List<DataCall> dataCalls = data.get(dataLine.getNameMethod());
+            dataCalls.forEach(dataSave -> {
                 if (dataSave.getId() == dataLine.getId()){
                     dataSave.setDateEnd(dataLine.getDate());
                 }
@@ -96,7 +96,7 @@ public class SimpleReader implements Reader {
     }
 
     @Override
-    public Map<String, List<DataSave>> getData() throws IOException, ParseException {
+    public Map<String, List<DataCall>> getData() throws IOException, ParseException {
         try (FileInputStream fis = new FileInputStream(path);
              InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
              BufferedReader br = new BufferedReader(isr)) {

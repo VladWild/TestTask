@@ -5,12 +5,12 @@ import lombok.ToString;
 import java.util.Date;
 
 @ToString
-public class DataSave {
+public class DataCall {
     private Date dateBegin;
     private Date dateEnd;
     private int id;
 
-    public DataSave(Date dateBegin, int id) {
+    public DataCall(Date dateBegin, int id) {
         this.dateBegin = dateBegin;
         this.id = id;
     }
@@ -21,5 +21,13 @@ public class DataSave {
 
     public int getId() {
         return id;
+    }
+
+    public Date getDateBegin() {
+        return dateBegin;
+    }
+
+    public Date getDateEnd() {
+        return dateEnd;
     }
 }

@@ -1,6 +1,7 @@
 package com.vg.testtask.services;
 
-import com.vg.testtask.data.reader.DataSave;
+import com.vg.testtask.data.processing.InfoMethod;
+import com.vg.testtask.data.reader.DataCall;
 import com.vg.testtask.printers.Printer;
 import com.vg.testtask.processing.DataProcessing;
 import com.vg.testtask.readers.Reader;
@@ -30,11 +31,15 @@ public class ServiceInfoLog {
     }
 
     public void execute() throws IOException, ParseException {
-        logger.info("Получение данных из log файла");
-        Map<String, List<DataSave>> data = reader.getData();
+        logger.info("Получение данных из log-файла");
+        Map<String, List<DataCall>> data = reader.getData();
 
         logger.info("Обработка полученных данных");
+        List<InfoMethod> infoMethods = dp.getInfoMethods(data);
 
+        System.out.println(infoMethods);
 
     }
+
+
 }
