@@ -35,16 +35,8 @@ public class SimpleReader implements Reader {
         this.path = path;
     }
 
-    private boolean isTimeFind(Matcher mDate){
-        return mDate.find();
-    }
-
-    private boolean isEntryFind(Matcher mEntry){
-        return mEntry.find();
-    }
-
-    private boolean isExitFind(Matcher mExit){
-        return mExit.find();
+    private boolean isMatcherFind(Matcher m){
+        return m.find();
     }
 
     private DataLine readData(String time, String substring) throws ParseException {
@@ -79,16 +71,16 @@ public class SimpleReader implements Reader {
 
     private void controller(String line) throws ParseException {
         Matcher mDate = pDate.matcher(line);
-        if (isTimeFind(mDate)) {
+        if (isMatcherFind(mDate)) {
 
             Matcher mEntry = pEntry.matcher(line);
-            if (isEntryFind(mEntry)){
+            if (isMatcherFind(mEntry)){
                 DataLine dataLine = readData(mDate.group(), mEntry.group());
                 saveDataEntry(dataLine);
             }
 
             Matcher mExit = pExit.matcher(line);
-            if (isExitFind(mExit)){
+            if (isMatcherFind(mExit)){
                 DataLine dataLine = readData(mDate.group(), mExit.group());
                 saveDataExit(dataLine);
             }

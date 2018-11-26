@@ -1,5 +1,4 @@
-2018-11-25 23:45:55,596 INFO  com.vg.testtask.services.ServiceInfoLog            - Получение данных из log-файла
-2018-11-25 23:45:56,612 INFO  com.vg.testtask.services.ServiceInfoLog            - Обработка полученных данных
-2018-11-25 23:45:56,656 INFO  com.vg.testtask.services.ServiceInfoLog            - Получение репорта данных
-2018-11-25 23:45:56,698 INFO  com.vg.testtask.services.ServiceInfoLog            - Вывод данных
-2018-11-25 23:45:56,698 INFO  com.vg.testtask.printers.ConsolePrinter            - Output text in console
+2018-11-26 00:09:36,666 INFO  com.vg.testtask.services.ServiceInfoLog            - Получение данных из log-файла
+2018-11-26 00:09:37,625 INFO  com.vg.testtask.services.ServiceInfoLog            - Обработка полученных данных
+2018-11-26 00:09:37,674 INFO  com.vg.testtask.services.ServiceInfoLog            - Получение репорта данных
+2018-11-26 00:09:37,691 INFO  com.vg.testtask.services.ServiceInfoLog            - Вывод данных

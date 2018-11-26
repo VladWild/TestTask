@@ -25,7 +25,7 @@
         <constructor-arg ref="reader" />
         <constructor-arg ref="dp" />
         <constructor-arg ref="report" />
-        <constructor-arg ref="printerFile" />
+        <constructor-arg ref="printerConsole" />
     </bean>
 
 </beans>
